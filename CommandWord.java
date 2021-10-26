@@ -2,14 +2,15 @@
  * Representations for all the valid command words for the game
  * along with a string in a particular language.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Yixuan Sun
+ * @version 2021.10.25
  */
 public enum CommandWord
 {
     // A value for each command word along with its
     // corresponding user interface string.
-    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?");
+    // add look 8.14
+    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?"),LOOK("look"),EAT("eat");
     
     // The command string.
     private String commandString;
@@ -30,4 +31,5 @@ public enum CommandWord
     {
         return commandString;
     }
+ 
 }
