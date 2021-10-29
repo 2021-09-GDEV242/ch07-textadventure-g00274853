@@ -66,4 +66,14 @@ public class CommandWords
         }
         System.out.println();
     }
+    
+    public String getCommandList()
+    {
+        String returnString = "";
+        for(String command: validCommands.keySet())
+        {
+            returnString = returnString + command + " ";
+        }
+        return returnString;
+    }
 }
