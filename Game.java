@@ -22,6 +22,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Player player;
+    private Room previousRoom;
         
     /**
      * Create the game and initialise its internal map.
@@ -215,6 +216,8 @@ public class Game
             case HEALTH:
                 printHealth();
                 break;
+            case BACK:
+                goBack();
                           
             
         }
@@ -280,6 +283,7 @@ public class Game
 
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
+        
 
         if (nextRoom == null) 
         {
@@ -293,11 +297,23 @@ public class Game
         else 
         {
             player.setRoom(nextRoom);
+            previousRoom = currentRoom;
             System.out.println(player.getRoom().getLongDescription());
             
         }
     }
 
+    /**
+     * Goes back one room, and only one room
+     */
+    private void goBack()
+    {
+        previousRoom = currentRoom;
+        currentRoom = previousRoom;
+        System.out.println(currentRoom.getLongDescription());
+    }
+
+    
     /**
      * Print the player's health to the console.
      */

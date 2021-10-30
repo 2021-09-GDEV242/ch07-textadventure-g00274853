@@ -11,7 +11,7 @@ public enum CommandWord
     // corresponding user interface string.
     // add look 8.14
     GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?"),LOOK("look"),EAT("eat"),
-     USE("use"), HEALTH("health");
+     USE("use"), HEALTH("health"),BACK("back");
     
     // The command string.
     private String commandString;

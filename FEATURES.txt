@@ -1,0 +1,10 @@
+In this modification and expansion, I added the 8.14 look command
+8.15 (p 303) - Add another command, ie. Eat with a simple text response
+8.16 (P 305) - Streamline printing of available commands
+B
+Add items to a room and make it fit multiple items.
+And return instructions.
+A
+I tried adding door and key Settings
+Tentatively changed the Settings for eating
+And added HP system
