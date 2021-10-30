@@ -49,28 +49,41 @@ public class Game
         sittingRoomSecondFloor, masterBedRoom, SecondBedRoom, SecondBedRoomBathRoom
         , bathRoomSecondFloor, bathRoom;
         
-        Item key, chocolate, apple;
+        Item key, chocolate, apple, pushpin;
       
         //to eat
         chocolate = new Item("chocolate","chocolate bar", 2, true);
         apple = new Item("apple","apple juice", 1, true);
 
         // create the rooms
-        exit = new Room("", true);
-        cloakRoom = new Room("", true);
+        exit = new Room("exit", true);
+        cloakRoom = new Room("A simple toilet", true);
         sittingRoomFirstFloor = new Room("", true);
-        restaurant = new Room("", true);
-        kitchen = new Room("", true);
-        bathRoomFirstFloor = new Room("", true);
-        stairsBottom = new Room("", true);
-        stairsTop = new Room("", true);
-        basement = new Room("", true);
-        sittingRoomSecondFloor = new Room("", true);
-        masterBedRoom = new Room("", true);
-        SecondBedRoom = new Room("", true);
-        SecondBedRoomBathRoom = new Room("", true);
-        bathRoomSecondFloor = new Room("", true);
-        bathRoom = new Room("", true);
+        restaurant = new Room("A simple restaurant", true);
+        kitchen = new Room("A simple kitchen", true);
+        bathRoomFirstFloor = new Room("A simple toilet", true);
+        stairsBottom = new Room("Nothing happened. Nothing happened", true);
+        stairsTop = new Room("Nothing happened. Nothing happened", true);
+        basement = new Room("Nothing happened. Nothing happened", true);
+        sittingRoomSecondFloor = new Room("Nothing happened. Nothing happened", true);
+        masterBedRoom = new Room("The master's bedroom. You accidentally stepped on a thumbtack while entering", true);
+        SecondBedRoom = new Room("Nothing happened. Nothing happened", true);
+        SecondBedRoomBathRoom = new Room("A guest lies, can see come out host often cleans", true);
+        bathRoomSecondFloor = new Room("A simple toilet", true);
+        bathRoom = new Room("A simple toilet", true);
+        
+        //create items
+            //to unlock doors
+        key = new Item("key","rusty key", 1, true);
+        pushpin = new Item("pushpin","rusty pushpin", 1, true);
+        
+        
+         //to eat
+        chocolate = new Item("chocolate","chocolate bar", 2, true);
+        apple = new Item("apple","apple juice", 1, true);
+        //
+        
+        
         
         // initialise room exits
         exit.setExit("west", cloakRoom);
@@ -91,11 +104,13 @@ public class Game
         
         kitchen.setExit("south", bathRoomFirstFloor);
         kitchen.setExit("east", restaurant);
+        kitchen.addItem(apple);
 
         stairsBottom.setExit("up", stairsTop);
         stairsBottom.setExit("down", basement);
         
         basement.setExit("up", stairsBottom);
+        basement.addItem(key);
 
         stairsTop.setExit("west", sittingRoomSecondFloor);
         stairsTop.setExit("down", stairsBottom);
@@ -118,8 +133,13 @@ public class Game
         SecondBedRoom.setExit("east", SecondBedRoomBathRoom);
         
         SecondBedRoomBathRoom.setExit("west", SecondBedRoom);
+        SecondBedRoomBathRoom.addItem(chocolate);
 
         player.setRoom(SecondBedRoom);  
+        
+        
+        
+        
     }
 
      /**
@@ -214,7 +234,7 @@ public class Game
             return;
         }
         String foodItem = command.getSecondWord();
-        if (!foodItem.equals("chocolate") && !foodItem.equals("candy")) {
+        if (!foodItem.equals("chocolate") && !foodItem.equals("apple")) {
             System.out.println("...this isn't edible.");
             return;
         } else if (foodItem.equals("chocolate")) {
@@ -330,6 +350,10 @@ public class Game
         }
         if (player.pickUpItem(currentItem)) {
             System.out.println("\nYou picked up an item.");
+        }
+        if(itemName.equals("pushpin"))
+        {
+            player.damage(3);
         }
     }
     
